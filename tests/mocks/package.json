@@ -1,0 +1,38 @@
+{
+    "name": "mocks",
+    "version": "1.0.0",
+    "description": "A Simple CAP Project",
+    "license": "ISC",
+    "dependencies": {
+        "@sap/cds": "^5.1.5",
+        "express": "^4",
+        "@sap/xb-msg-amqp-v100": "^0.9.52",
+        "sqlite3": "^5"
+    },
+    "devDependencies": {
+        "sqlite3": "^5"
+    },
+    "engines": {
+        "node": "14.x"
+    },
+    "scripts": {
+        "start": "NODE_ENV=development cds run --with-mocks --in-memory"
+    },
+    "cds": {
+        "requires": {
+            "messaging": {
+                "kind": "enterprise-messaging-shared"
+            },
+            "db": {
+                "kind": "sqlite",
+                "credentials": {
+                    "database": ":memory:"
+                }
+            },
+            "API_BUSINESS_PARTNER": {
+                "kind": "odata",
+                "model": "srv/external/API_BUSINESS_PARTNER"
+            }
+        }
+    }
+}
